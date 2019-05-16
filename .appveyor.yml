@@ -3,7 +3,7 @@ environment:
   - TARGET: x86_64-pc-windows-msvc
   - TARGET: i686-pc-windows-msvc
   - TARGET: x86_64-pc-windows-gnu
-    MINGW_PATH: 'C:\mingw-w64\i686-5.3.0-posix-dwarf-rt_v4-rev0\bin'
+    MINGW_PATH: 'C:\mingw-w64\x86_64-6.3.0-posix-seh-rt_v5-rev1\bin'
   - TARGET: i686-pc-windows-gnu
     MINGW_PATH: 'C:\MinGW\bin'
 install:
