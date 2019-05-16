@@ -3,11 +3,13 @@ environment:
   - TARGET: x86_64-pc-windows-msvc
   - TARGET: i686-pc-windows-msvc
   - TARGET: x86_64-pc-windows-gnu
+    PATH: %PATH%;C:\mingw-w64\i686-5.3.0-posix-dwarf-rt_v4-rev0\bin
   - TARGET: i686-pc-windows-gnu
+    PATH: %PATH%;C:\MinGW\bin
 install:
   - curl -sSf -o rustup-init.exe https://win.rustup.rs/
   - rustup-init.exe -y --default-host %TARGET%
-  - set PATH=%PATH%;C:\Users\appveyor\.cargo\bin;C:\MinGW\bin
+  - set PATH=%PATH%;C:\Users\appveyor\.cargo\bin
   - rustc -vV
   - cargo -vV
 build: false
