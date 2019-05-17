@@ -4,11 +4,17 @@ matrix:
     allow_failures:
         - rust: nightly
     include:
-        - rust: stable
+        #- rust: stable
 
         # android
         - rust: stable
           env: TARGET=aarch64-linux-android
+          before_install:
+              - export RAYLIB_PACKAGE_SUFFIX="-Android-arm64";
+              - wget https://dl.google.com/android/repository/android-ndk-r17-linux-x86_64.zip;
+              - unzip -qq android-ndk*.zip;
+              - android-ndk*/build/tools/make_standalone_toolchain.py --arch arm64 --api 21 --install-dir /tmp/android-toolchain;
+              - export PATH=/tmp/android-toolchain/bin:$PATH;
           install: rustup target add "$TARGET"
           # disable default-tls feature since cross-compiling openssl is dragons
           script: cargo build --target "$TARGET" --no-default-features
